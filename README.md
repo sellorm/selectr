@@ -101,7 +101,7 @@ At any time, running `test.R` will print the current version of R.
 
 ## Caveats and stuff
 
-This is quick new and I haven't tested it very thoroughly at all yet, so your mileage may vary.
+This is quick, new and I haven't tested it very thoroughly at all yet, so your mileage may vary.
 
 ## License
 
