@@ -1,0 +1,47 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+SCRIPTPATH="$( cd "$(dirname "$0")" ; pwd -P )"
+
+# Check that the r-versions file exists
+if [[ ! -f /etc/rstudio/r-versions ]]; then
+  echo "Error: /etc/rstudio/r-versions not found"
+  exit 1
+fi
+
+# Check to see if we should be using an environment variable
+if [[ ${R_HOME:-default} == "default" ]]; then
+  R_HOME=$(head -1 /etc/rstudio/r-versions)
+fi
+
+# Set the default library location for this installation
+R_LIBS=$R_HOME/library
+
+# check what's being called, R or Rscript
+if [[ $(basename ${0}) == "Rscript" ]]; then
+  # start Rscript
+  $R_HOME/bin/Rscript ${@}
+elif [[ $(basename ${0}) == "R" ]]; then
+  # start R
+  $R_HOME/bin/R ${@}
+else
+  # Run selectR itself
+  if [[ ${1:-default} == "init" ]]; then
+    # configure the sym links for R and Rscript
+    ln -s ${SCRIPTPATH}/selectR ${SCRIPTPATH}/R
+    ln -s ${SCRIPTPATH}/selectR ${SCRIPTPATH}/Rscript
+  elif [[ ${1:-default} == "-q" ]]; then
+     # just print the version information
+     cat /etc/rstudio/r-versions
+  else
+    # print usage info
+    echo ' -------- selectR --------'
+    echo
+    echo "R installations available on this system (The first is the default):"
+    cat /etc/rstudio/r-versions | sed 's/^/    /'
+    echo
+    echo "To override the default use 'export R_HOME=/path/to/R', using a path from the list above"
+    echo
+    echo "If the 'R' or 'Rscript' commands don't work, make sure 'selectR init' was run after installation"
+  fi
+fi
