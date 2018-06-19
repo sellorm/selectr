@@ -6,6 +6,8 @@ For when you've got muiltiple versions of R on a system, but you've still got wo
 
 With selectR in place, the version of R you use (from those you already have installed) is up to you.
 
+There are many reasons why you might have multiple versions of R installed. Perhaps you need the old version for compliance or compatability, or perhaps you're just an experimenter.
+
 When you use multiple versions of R withing RStudio Server Pro, you specify them in a file called '/etc/rstudio/r-versions'.
 
 selectR leverages this file (though you can use the file without installing RSP) to decide what your default R version will be.
@@ -30,7 +32,7 @@ If you use RSP, you may already have this file. If not, you can create one anywa
 
 ## Installation
 
-Probably still some work to do here. For now let's go with making sure the scripts are somewhere on your path, before any pre-existing R or Rscript.
+Definitely still some work to do here. For now let's go with making sure the scripts are somewhere on your path, before any pre-existing R or Rscript.
 
 If you then run `selectR init`, this will create the R and Rscript commands that selectR will use.
 
@@ -65,7 +67,7 @@ Default library paths: /Library/Frameworks/R.framework/Versions/3.5/Resources/li
 finally selectR itself prints some help output:
 
 ```
-' -------- selectR --------'
+ -------- selectR --------
 
 R installations available on this system (The first is the default):
     /opt/R/3.5.0/lib64/R
