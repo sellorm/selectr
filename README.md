@@ -8,7 +8,7 @@ With selectR in place, the version of R you use (from those you already have ins
 
 There are many reasons why you might have multiple versions of R installed. Perhaps you need the old version for compliance or compatability, or perhaps you're just an experimenter.
 
-When you use multiple versions of R withing RStudio Server Pro, you specify them in a file called '/etc/rstudio/r-versions'.
+When you use multiple versions of R within RStudio Server Pro, you specify them in a file called '/etc/rstudio/r-versions'.
 
 selectR leverages this file (though you can use the file without installing RSP) to decide what your default R version will be.
 
@@ -16,7 +16,7 @@ To use a different version of R, you just need to set a single environment varia
 
 ## The r-versions file.
 
-You may have come across this file if you use RStudio Server Pro. It's a flat file in '/etc/rstudio/r-versions', which contains the path to all of the R versions installed on your system.
+You may have come across this file if you use RStudio Server Pro. It's a flat file in '/etc/rstudio/r-versions', which contains the paths to all of the R versions installed on your system.
 
 So it might look something like this:
 
@@ -32,7 +32,7 @@ If you use RSP, you may already have this file. If not, you can create one anywa
 
 ## Installation
 
-Definitely still some work to do here. For now let's go with making sure the scripts are somewhere on your path, before any pre-existing R or Rscript.
+Definitely still some work to do here. For now let's go with making sure the script is somewhere on your `$PATH`, before any pre-existing R or Rscript.
 
 If you then run `selectR init`, this will create the R and Rscript commands that selectR will use.
 
